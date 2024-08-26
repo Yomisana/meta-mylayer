@@ -128,6 +128,8 @@ save and exit
 開始建置:
 ```
 bitbake core-image-full-cmdline
+// 添加 wifi 資訊則
+bitbake linux-raspberrypi
 ```
 
 ## 結果
