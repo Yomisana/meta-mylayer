@@ -18,6 +18,8 @@
   - [複製/修改設定檔](#複製修改設定檔)
     - [local.conf](#localconf)
     - [bblayers.conf](#bblayersconf)
+    - [啟動環境](#啟動環境)
+    - [raspberrypi3 nl80211 wifi 驅動添加](#raspberrypi3-nl80211-wifi-驅動添加)
     - [導入自訂義測試驅動](#導入自訂義測試驅動)
   - [開始構建](#開始構建)
     - [如果在 root 下執行](#如果在-root-下執行)
@@ -30,7 +32,7 @@
 - 在指令上使用 ~ 代表使用者目錄，避免他人復刻時出現問題
 ## 虛擬機更新與安裝依賴
 ```
-apt-get update; apt-get -y install gawk wget git diffstat unzip texinfo gcc-multilib build-essential chrpath socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping zstd;git --version;chrpath --version
+apt-get update; apt-get -y install gawk wget git diffstat unzip texinfo gcc-multilib build-essential chrpath socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping zstd tmux;git --version;chrpath --version
 ```
 輸出:
 ```
@@ -105,16 +107,33 @@ BBLAYERS ?= " \
 - 請注意 {userdir} 請替換為自己的使用者目錄
 save and exit
 
+### 啟動環境 
+```
+cd ~/yocto/source/poky/;source oe-init-build-env
+```
+
+### raspberrypi3 nl80211 wifi 驅動添加
+```
+bitbake linux-raspberrypi -c menuconfig
+```
+選擇 
+- Networking support
+  - Wireless
+    - cfg80211 - wireless configuration API
+    - nl80211 - new netlink-based wireless configuration API
+    - mac80211 - IEEE 802.11 mesh, monitor, etc
+save and exit
+```
+bitbake linux-raspberrypi -c compile
+```
+
 ### 導入自訂義測試驅動
 ```
 cd ~/yocto/source/poky/;git clone https://github.com/Xuan901001/meta-mylayer.git
 ```
 
 ## 開始構建
-```
-cd ~/yocto/source/poky/;source oe-init-build-env
-```
-
+> 準備開始建構
 ### 如果在 root 下執行
 ```
 nano ~/yocto/source/poky/build/conf/local.conf
