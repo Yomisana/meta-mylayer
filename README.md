@@ -123,6 +123,8 @@ bitbake linux-raspberrypi -c menuconfig
     - nl80211 - new netlink-based wireless configuration API
     - mac80211 - IEEE 802.11 mesh, monitor, etc
 save and exit
+
+建置 raspberrypi3 系統並添加config上的開啟的 nl80211 驅動
 ```
 bitbake linux-raspberrypi -c compile
 ```
