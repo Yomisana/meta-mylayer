@@ -22,6 +22,7 @@
   - [開始構建](#開始構建)
     - [如果在 root 下執行](#如果在-root-下執行)
   - [結果](#結果)
+  - [特殊指令](#特殊指令)
 
 
 # 安裝步驟復刻
@@ -141,3 +142,13 @@ cd ~/yocto/source/poky/build/tmp/deploy/images/raspberrypi3/
 ```
 > core-image-full-cmdline-raspberrypi3-20240826063701.rootfs.wic
 ```
+
+## 特殊指令
+> 清理先前的構建結果  
+bitbake -c clean core-image-full-cmdline
+
+> 構建映像  
+bitbake core-image-full-cmdline
+
+> 模塊是否在內核中?  
+> lsmod | grep cfg80211
