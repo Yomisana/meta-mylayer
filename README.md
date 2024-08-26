@@ -152,3 +152,6 @@ bitbake core-image-full-cmdline
 
 > 模塊是否在內核中?  
 > lsmod | grep cfg80211
+
+> 查看 layer 依賴是否存在可寫入?
+> bitbake-layers show-appends | grep wpa-supplicant
