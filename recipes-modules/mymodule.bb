@@ -1,6 +1,6 @@
 DESCRIPTION = "My Kernel Module"
 LICENSE = "GPLv2"
-LIC_FILES_CHKSUM = "file://mymodule.c;md5=c5ff74bd0cb860d2d1718e11955bfbc4"
+LIC_FILES_CHKSUM = "file://mymodule.c;md5=ae2757b109b624bd24c872216d2c37ed"
 SRC_URI = "file://mymodule.c file://Makefile"
 
 S = "${WORKDIR}"
